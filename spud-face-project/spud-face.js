@@ -103,5 +103,35 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   // ** Phase 3: Check that license numbers match **
 
+  let licenseNum = document.getElementById("license-num");
+  let licenseNumConfirm = document.getElementById("license-num-confirm");
+  let form = document.getElementById("drivers-license-form");
+
+  console.log(licenseNum);
+  console.log(licenseNumConfirm);
+
+  const checkLicenseNumber = () => {
+    if(licenseNum.value !== licenseNumConfirm.value) {
+      licenseNum.style.backgroundColor = 'lightcoral';
+      licenseNumConfirm.style.backgroundColor = 'lightcoral';
+    }
+
+  }
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    checkLicenseNumber();
+  });
+
   // ** Phase 4: Update submit button click count **
+
+  let button = document.querySelector(".form__submit");
+  let count = 0;
+
+  button.addEventListener("click", event => {
+    count++;
+    console.log(count);
+  });
+  
 });
