@@ -52,19 +52,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   // ** Phase 1B: Update license with event delegation and event.target **
 
-  // let inputs = document.querySelectorAll('.form__field');
-  // let cardTitles = document.querySelectorAll('.license__info');
-  // inputs.forEach((input) => {
-  //   input.addEventListener('input', (event) => {
-  //     let entry = event.target.value;
-  //     cardTitles.forEach((title) => {
-  //       if (title.id.includes(entry.id)) {
-  //         title.innerHTML = entry;
-  //       }
-  //     });
-  //   });
-  // });
-
   /////////////////////////////////////////////////////////////////////////////
 
   const licenseForm = document.getElementById('drivers-license-form');
@@ -81,6 +68,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   });
 
+  const checkbox = document.querySelector('#donor-status');
+  const organID = document.querySelector('#card-donor-status');
+
+  checkbox.addEventListener('change', (event) => {
+    if (checkbox.checked) {
+      organID.innerHTML = 'Yes';
+    } else {
+      organID.innerHTML = 'No';
+    }
+  });
+
   // ** Phase 2: Add focus and blur events to form inputs **
 
   let inputs = document.querySelectorAll('.form__input');
@@ -95,30 +93,44 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   });
 
-  // const form = document.querySelector('#drivers-license-form');
+  /////////////////////////////////////////////////////////////////////////////////
 
-  // form.addEventListener('focus', (event) => {
-  //   input.style.backgroundColor = 'lightgreen';
-  // });
+  // const form1 = document.querySelector('#drivers-license-form');
+  // console.log(form1);
+
+  // form1.addEventListener(
+  //   'focus',
+  //   (event) => {
+  //     event.target.style.backgroundColor = 'lightgreen';
+  //   },
+  //   true
+  // );
+
+  // form1.addEventListener(
+  //   'blur',
+  //   (event) => {
+  //     event.target.style.backgroundColor = 'unset';
+  //   },
+  //   true
+  // );
 
   // ** Phase 3: Check that license numbers match **
 
-  let licenseNum = document.getElementById("license-num");
-  let licenseNumConfirm = document.getElementById("license-num-confirm");
-  let form = document.getElementById("drivers-license-form");
+  let licenseNum = document.getElementById('license-num');
+  let licenseNumConfirm = document.getElementById('license-num-confirm');
+  let form = document.getElementById('drivers-license-form');
 
   console.log(licenseNum);
   console.log(licenseNumConfirm);
 
   const checkLicenseNumber = () => {
-    if(licenseNum.value !== licenseNumConfirm.value) {
+    if (licenseNum.value !== licenseNumConfirm.value) {
       licenseNum.style.backgroundColor = 'lightcoral';
       licenseNumConfirm.style.backgroundColor = 'lightcoral';
     }
+  };
 
-  }
-
-  form.addEventListener("submit", event => {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     checkLicenseNumber();
@@ -126,12 +138,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   // ** Phase 4: Update submit button click count **
 
-  let button = document.querySelector(".form__submit");
+  let button = document.querySelector('.form__submit');
   let count = 0;
 
-  button.addEventListener("click", event => {
+  button.addEventListener('click', (event) => {
     count++;
     console.log(count);
   });
-  
 });
